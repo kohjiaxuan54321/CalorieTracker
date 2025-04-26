@@ -1,0 +1,141 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Food Calorie Detector</title>
+  <link href="https://fonts.googleapis.com/css?family=Roboto:400,500,700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  <link rel="stylesheet" href="/static/styles.css">
+  <script>
+    function confirmPrediction(isCorrect) {
+      if (isCorrect) {
+        document.getElementById("true_label").value = "";
+        document.getElementById("retrainForm").submit();
+      } else {
+        document.getElementById("correctLabelDiv").style.display = "block";
+        // focus on the input so ENTER submission is more obvious:
+        document.getElementById("true_label").focus();
+      }
+    }
+  </script>
+</head>
+<body>
+  <div class="container">
+    <header>
+      <h1><i class="fas fa-apple-alt"></i> Food Calorie Detector</h1>
+    </header>
+    <main>
+      <!-- Upload Form -->
+      <form action="/upload" method="post" enctype="multipart/form-data">
+        <label for="file"><i class="fas fa-camera"></i> Choose an image:</label>
+        <input type="file" id="file" name="file" accept="image/*" required>
+        <button type="submit"><i class="fas fa-utensils"></i> Detect Nutrition</button>
+      </form>
+
+      {% if results %}
+        {% for info in results %}
+          <div class="nutrition-card">
+            <table class="nutrition-facts">
+              <thead>
+                <tr><th colspan="2">Nutrition Facts</th></tr>
+                {% if info.serving and info.serving != "—" %}
+                <tr class="subheader">
+                  <td>Serving Size</td>
+                  <td>{{ info.serving }}</td>
+                </tr>
+                {% endif %}
+              </thead>
+              <tbody>
+                <tr class="thick-line">
+                  <td>Calories</td>
+                  <td>{{ info.calories }}</td>
+                </tr>
+                <tr class="thick-line section-label">
+                  <td>Total Fat</td>
+                  <td>{{ info.total_fat }} g</td>
+                </tr>
+                <tr>
+                  <td class="indent">Saturated Fat</td>
+                  <td>{{ info.sat_fat }} g</td>
+                </tr>
+                <tr>
+                  <td class="indent">Trans Fat</td>
+                  <td>{{ info.trans_fat }} g</td>
+                </tr>
+                <tr class="thin-line section-label">
+                  <td>Cholesterol</td>
+                  <td>{{ info.cholesterol }} mg</td>
+                </tr>
+                <tr>
+                  <td>Sodium</td>
+                  <td>{{ info.sodium }} mg</td>
+                </tr>
+                <tr>
+                  <td>Total Carbohydrate</td>
+                  <td>{{ info.carbs }} g</td>
+                </tr>
+                <tr>
+                  <td class="indent">Dietary Fiber</td>
+                  <td>{{ info.fiber }} g</td>
+                </tr>
+                <tr>
+                  <td class="indent">Total Sugars</td>
+                  <td>{{ info.sugars }} g</td>
+                </tr>
+                <tr class="thin-line section-label">
+                  <td>Protein</td>
+                  <td>{{ info.protein }} g</td>
+                </tr>
+                <tr class="thick-line section-label">
+                  <td>Vitamin D</td>
+                  <td>{{ info.vitamin_d }} mcg</td>
+                </tr>
+                <tr>
+                  <td>Calcium</td>
+                  <td>{{ info.calcium }} mg</td>
+                </tr>
+                <tr>
+                  <td>Iron</td>
+                  <td>{{ info.iron }} mg</td>
+                </tr>
+                <tr class="thin-line">
+                  <td>Potassium</td>
+                  <td>{{ info.potassium }} mg</td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+        {% endfor %}
+
+        {# only show confirmation and retrain form if NOT yet retrained #}
+        {% if not retrain_message %}
+          <div class="confirmation">
+            <p>Is the detected food <strong>{{ predicted_label }}</strong> correct?</p>
+            <button type="button" onclick="confirmPrediction(true)">Yes</button>
+            <button type="button" onclick="confirmPrediction(false)">No</button>
+          </div>
+
+          <form id="retrainForm" action="/retrain_user" method="post">
+            <input type="hidden" name="image_data" value="{{ image_data }}">
+            <input type="hidden" name="predicted_label" value="{{ predicted_label }}">
+            <div id="correctLabelDiv" style="display:none;">
+              <label for="true_label">Correct label:</label>
+              <input type="text" id="true_label" name="true_label"
+                     placeholder="e.g., beef tartare" autocomplete="off">
+            </div>
+          </form>
+        {% endif %}
+
+        {# after retraining, only show the loss message #}
+        {% if retrain_message %}
+          <p class="retrain-message">{{ retrain_message }}</p>
+        {% endif %}
+
+        <a href="/"><i class="fas fa-sync-alt"></i> Try another image</a>
+      {% endif %}
+    </main>
+  </div>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/js/all.min.js"></script>
+</body>
+</html>
