@@ -40,18 +40,15 @@ pip install -r requirements.txt
 
 uvicorn app:app --reload --host 192.168.1.100
 
-
   •  Or modify the Uvicorn call in app.py:
 
 if name == "main":
     import uvicorn
     uvicorn.run("app:app", host="192.168.1.100", port=8000, reload=True)
 
-
   2.  Start the server:
 
 uvicorn app:app --reload
-
 
   3.  Open http://<YOUR_LOCAL_IP>:8000 in your browser.
 
