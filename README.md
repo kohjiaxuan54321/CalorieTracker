@@ -2,14 +2,14 @@
 
 A simple FastAPI web application that lets you upload a photo of food, detects the food item using a Hugging Face model, and retrieves nutrition facts via the FatSecret API.
 
-## Features
+### Features
   •  Image upload and preview
   •  Food detection using skylord/swin-fineted-food101
   •  Nutrition lookup via FatSecret API (OAuth1)
   •  User feedback for model retraining
   •  Responsive UI with Jinja2 templates and CSS
 
-## Backend File Structure
+### Backend File Structure
 
 ├── app.py              # Main FastAPI application
 ├── requirements.txt    # Python dependencies
@@ -18,7 +18,7 @@ A simple FastAPI web application that lets you upload a photo of food, detects t
 └── templates/          # Jinja2 HTML templates
     └── index.html      # Home page template
 
-## Setup
+### Setup
   1.  Clone the repo:
 
 git clone <repo-url>
@@ -34,7 +34,7 @@ pip install -r requirements.txt
   •  Move styles.css into static/
   •  Move index.html into templates/
 
-## Running
+### Running
   1.  Update the host to your machine’s local IP so others on your network can access the app. For example, if your IP is 192.168.1.100, either:
   •  Launch Uvicorn with a host flag:
 
@@ -67,7 +67,7 @@ if let url = URL(string: "http://192.168.1.100:8000") {
 
 Replace 192.168.1.100 with your actual IP.
 
-## Usage
+### Usage
 
 Build and run the app on a device or simulator that is connected to the same local network as your server.
 
@@ -87,7 +87,7 @@ setContent {
 
 Replace 192.168.1.100 with your actual local IP.
 
-## Usage
+### Usage
 
 Connect your Android device or start an emulator on the same LAN as your server.
 
