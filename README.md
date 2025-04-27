@@ -56,13 +56,13 @@ uvicorn app:app --reload
 # XCode Configuration
 
 In ViewController.swift, update the URL string to point at your Mac’s local IP address where the FastAPI server is running. For example:
-
+```bash
 // ViewController.swift (excerpt)
 if let url = URL(string: "http://192.168.1.100:8000") {
     let request = URLRequest(url: url)
     webView.load(request)
 }
-
+```
 Replace 192.168.1.100 with your actual IP.
 
 ### Usage
@@ -76,13 +76,13 @@ Upload an image, and interact with the nutrition detector as in the web version.
 # Android Configuration
 
 In MainActivity.kt, update the URL passed to WebViewScreen to point at your Mac’s local IP address where the FastAPI server is running. For example:
-
+```bash
 setContent {
     NutritionViewerTheme {
         WebViewScreen("http://192.168.1.100:8000/")
     }
 }
-
+```
 Replace 192.168.1.100 with your actual local IP.
 
 ### Usage
