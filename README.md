@@ -38,19 +38,19 @@ pip install -r requirements.txt
 ### Running
   1.  Update the host to your machine’s local IP so others on your network can access the app. For example, if your IP is 192.168.1.100, either:
   •  Launch Uvicorn with a host flag:
-
+```bash
 uvicorn app:app --reload --host 192.168.1.100
-
+```
   •  Or modify the Uvicorn call in app.py:
-
+```bash
 if name == "main":
     import uvicorn
     uvicorn.run("app:app", host="192.168.1.100", port=8000, reload=True)
-
+```
   2.  Start the server:
-
+```bash
 uvicorn app:app --reload
-
+```
   3.  Open http://<YOUR_LOCAL_IP>:8000 in your browser.
 
 # XCode Configuration
