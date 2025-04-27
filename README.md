@@ -32,6 +32,7 @@ pip install -r requirements.txt
 ```
 
   3.  Arrange files:
+
   •  Move styles.css into static/
   •  Move index.html into templates/
 
