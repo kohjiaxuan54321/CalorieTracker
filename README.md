@@ -10,7 +10,7 @@ A simple FastAPI web application that lets you upload a photo of food, detects t
   •  Responsive UI with Jinja2 templates and CSS
 
 ### Backend File Structure
-
+.
 ├── app.py              # Main FastAPI application
 ├── requirements.txt    # Python dependencies
 ├── static/             # Static assets
