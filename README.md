@@ -5,9 +5,9 @@ A simple FastAPI web application that lets you upload a photo of food, detects t
 ### Features
   1.  Image upload and preview
   2.  Food detection using skylord/swin-fineted-food101
-  •  Nutrition lookup via FatSecret API (OAuth1)
-  •  User feedback for model retraining
-  •  Responsive UI with Jinja2 templates and CSS
+  3.  Nutrition lookup via FatSecret API (OAuth1)
+  4.  User feedback for model retraining
+  5.  Responsive UI with Jinja2 templates and CSS
 
 ### Backend File Structure
 ```bash
