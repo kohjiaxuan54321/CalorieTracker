@@ -21,15 +21,15 @@ A simple FastAPI web application that lets you upload a photo of food, detects t
 
 ### Setup
   1.  Clone the repo:
-
+``` bash
 git clone <repo-url>
 cd <repo-folder>/CalorieTrackerVM
-
+```
 
   2.  Install dependencies:
-
+```bash
 pip install -r requirements.txt
-
+```
 
   3.  Arrange files:
   •  Move styles.css into static/
