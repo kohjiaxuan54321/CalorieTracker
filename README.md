@@ -3,9 +3,8 @@
 A simple FastAPI web application that lets you upload a photo of food, detects the food item using a Hugging Face model, and retrieves nutrition facts via the FatSecret API.
 
 ### Features
-
-  •  Image upload and preview
-  •  Food detection using skylord/swin-fineted-food101
+  1.  Image upload and preview
+  2.  Food detection using skylord/swin-fineted-food101
   •  Nutrition lookup via FatSecret API (OAuth1)
   •  User feedback for model retraining
   •  Responsive UI with Jinja2 templates and CSS
