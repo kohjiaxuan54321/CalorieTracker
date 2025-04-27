@@ -31,9 +31,7 @@ cd <repo-folder>/CalorieTrackerVM
 pip install -r requirements.txt
 ```
 
-  3.  Arrange files:
-  •  Move styles.css into static/
-  •  Move index.html into templates/
+  3.  Arrange files: Move styles.css into static/ or Move index.html into templates/
 
 ### Running
   1.  Update the host to your machine’s local IP so others on your network can access the app. For example, if your IP is 192.168.1.100, either:
